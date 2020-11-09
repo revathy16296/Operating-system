@@ -7,12 +7,12 @@ int main (int argSize, char * String[0]) {
 	int end = atoi(String[3]);
     int size = argSize;
     
-    check_Input_Size(size);
+    checkInputSize(size);
     
     for (int i = str; i != end+1; i++) {
     
-        int n = Convert_To_Single_Digit(i);
-        int m = searching_For_Match(n, srh, i);
+        int n = Convert_To_Single_Digit(i);        
+        int m = searchingForMatch(n, srh, i);
     }
     return EXIT_SUCCESS;
 }
