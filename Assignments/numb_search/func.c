@@ -1,6 +1,6 @@
 #include "header.h"
 
-int checkInputSize(int num) {
+int check_Input_Size(int num) {
 	if (num < 4) {
 		printf("Usage: Enter the number to search for and specify the range(starting number and ending number)\n");
 		exit(1);
@@ -17,10 +17,10 @@ int Convert_To_Single_Digit(int num) {
     }    
     return sum;
 }
-int searchingForMatch(int n, int srh, int i) {
+int searching_For_Match(int num, int target_num, int i) {
 
-    if (n == srh) {
-        printf("Found some matches for numbers = %d for the number %d\n",i, n);
+    if (num == target_num) {
+        printf("Found some matche for numbers = %d for the number %d\n",i, num);
         return 0;
     }       
 }

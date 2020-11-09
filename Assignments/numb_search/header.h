@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int checkInputSize(int);
+int check_Input_Size(int);
 int Convert_To_Single_Digit(int);
-int searchingForMatch(int, int, int);
+int searching_For_Match(int, int, int);
