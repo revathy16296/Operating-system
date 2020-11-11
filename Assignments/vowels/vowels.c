@@ -9,7 +9,6 @@ parent process.*/
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <time.h>
 #include <string.h>
 
 int main(int argc, char * argv[]) {
@@ -38,17 +37,16 @@ int main(int argc, char * argv[]) {
         char string[200];
         strcpy(string, argv[1]);
         printf("In child (PID=%d)\n", getpid());
-        strLen = strlen(string);
         
-        for(int i = 0; i < strLen; i++) {
+        for(int i = 0; i < 5; i++) {
             //if vowel exists in string then add + 1 to countOfVowel 
             if (strchr(string, *vowel[i]) != NULL) {
                 countOfVowel++; 	
             }    
         }
 
-        if (write(fd[1], &countOfVowel, sizeof(int)) == -1) {
-            printf("not able to write..\n");
+        if ((write(fd[1], &countOfVowel, sizeof(int)) == -1) || (countOfVowel == 0)) {
+            printf("\nNo match found..\n");
             return 1;
         }
         sleep(1);
@@ -63,12 +61,12 @@ int main(int argc, char * argv[]) {
         int op_of_child;
         
         if (read(fd[0], &op_of_child, sizeof(int)) == -1) {
-            printf("Not able to read..\n");
+            printf("Not able to read from fd[0]..\n");
             return 1;
         }    
         close(fd[0]);
         printf("\nBack in Parrent process (PID=%d)\n", getpid());
-        printf("Total count of vowel in string %d\n\n", op_of_child);    
+        printf("Total count of vowel in string is %d\n\n", op_of_child);    
     }
     return EXIT_SUCCESS;
 }
