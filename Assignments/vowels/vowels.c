@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
         exit(EXIT_FAILURE);
     }
     
-    else if(ret_value == 0) {    
+    if(ret_value == 0) {    
         close(fd[0]);
         int countOfVowel=0, strLen;
         char * vowel[6] = {"a","e","i","o","u"};
