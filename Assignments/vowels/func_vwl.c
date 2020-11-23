@@ -8,4 +8,4 @@ int openPipe(int fd[2]) {
     }
 }
 
-int CheckingIfChildExist(int )
+int CheckingIfChildExist(int)

@@ -20,7 +20,8 @@ int Convert_To_Single_Digit(int num) {
 int searching_For_Match(int num, int target_num, int i) {
 
     if (num == target_num) {
-        printf("Found some matche for numbers = %d for the number %d\n",i, num);
+        //printf("Found some matche for numbers = %d for the number %d\n",i, num);
+        printf("Found a match for number = %d\n", i);
         return 0;
     }       
 }
