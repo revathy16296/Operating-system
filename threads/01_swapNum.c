@@ -7,8 +7,8 @@ struct swaping_numbers {
     int num2;
 }; typedef struct swaping_numbers swap;
 
-void *entry_Point(void *value) {
-    
+void *entry_Point(void *value) 
+{
     printf("\nSwapping inside thread 1 :XD \n");
     
     swap temp;
@@ -18,8 +18,8 @@ void *entry_Point(void *value) {
     printf("After swap: num1 = %d and num2 = %d\n", temp.num1, temp.num2); 
 }
 
-int main(int argc, char *argv[]) {
-    
+int main(int argc, char *argv[]) 
+{
     swap nNum;
     nNum.num1 = 123;
     nNum.num2 = 321;

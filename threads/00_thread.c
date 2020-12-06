@@ -3,16 +3,16 @@
 #include <pthread.h>
 // #define Message 85
 
-void *entry_Point(void *somevalue) {
-    
+void *entry_Point(void *somevalue) 
+{
     printf("Hello from the thread 1 : ) \n");
     int *num = somevalue;
     printf("The value passed to thread is %d\n", *num);
     return NULL;
 }
 
-int main(int argc, char *argv[]) {
-    
+int main(int argc, char *argv[]) 
+{
     printf("Hello from the main thread :D \n");
     int num = 123;
 
