@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int injectArray(int a[], int b[], int size1, int size2)
 {
@@ -34,22 +33,28 @@ int replaceArray(int a[], int b[])
 
 int main ()
 {
-	int a[10] = {1,2,3,4,5,6,7,8,9,10};
-	int b[5] = {11,12,13,14,15};
+	int first, second;
+	
+	printf("Enter the size of arrays Array_1 and Array_2 \n");
+	scanf("%d""%d", &first, &second);
+	
+	int a[first], b[second];
 
-	/*printf("Enter the number for first array: \n");
-	for (int i = 0; i < 10; i++) {
+	printf("Enter the number for first array: \n");
+	for (int i = 0; i < first; i++) {
 		scanf("%d", &a[i]);
 	}	
 
 	printf("Enter the number for second array: \n");
-	for (int j = 0; j < 5; j++) {
+	for (int j = 0; j < second; j++) {
 		scanf("%d", &b[j]);
-	}*/
+	}
 
 	int size1 = sizeof(a)/sizeof(a[0]);
 	int size2 = sizeof(b)/sizeof(b[0]);
 
 	replaceArray(a, b);
 	injectArray(a, b, size1, size2);
+
+	return EXIT_SUCCESS;
 }
