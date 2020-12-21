@@ -34,12 +34,22 @@ int replaceArray(int a[], int b[])
 
 int main ()
 {
-	int a[] = {1,2,3,4,5,6,7,8,9,10};
-	int b[] = {11,12,13,14,15};
+	int a[10] = {1,2,3,4,5,6,7,8,9,10};
+	int b[5] = {11,12,13,14,15};
+
+	/*printf("Enter the number for first array: \n");
+	for (int i = 0; i < 10; i++) {
+		scanf("%d", &a[i]);
+	}	
+
+	printf("Enter the number for second array: \n");
+	for (int j = 0; j < 5; j++) {
+		scanf("%d", &b[j]);
+	}*/
 
 	int size1 = sizeof(a)/sizeof(a[0]);
 	int size2 = sizeof(b)/sizeof(b[0]);
 
-	replaceArray(&a, &b);
-	injectArray(&a, &b, size1, size2);
+	replaceArray(a, b);
+	injectArray(a, b, size1, size2);
 }
