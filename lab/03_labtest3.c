@@ -2,23 +2,37 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-struct parm_arr {
+struct parm_arr 
+{
 	int arr1[10];
 	int arr2[10];
-	int size_a;
-	int size_b;
-	int tot_size;
+	int Size_a;
+	int Size_b;
 }; typedef struct parm_arr array;
 
-void *replaceArray(array *array)
+void *replaceArray_evn(array *array)
 {	
-	/*for(int i = 0; i < t_size; i++) {
-		printf("array[%d] = %d\n", i, array[i]);
-	}*/
+	for (int i = 0; i < array->Size_b; i++) {
+		if((i % 2) == 0) {
+			array->arr2[i] = array->arr1[i + 1];	
+		}
+		printf("b[%d] = %d\n", i, array->arr2[i]);
+	}
 	return NULL;
 }
 
-int main() 
+void *replaceArray_odd(array *array)
+{	
+	for (int i = 0; i < array->Size_b; i++) {
+		if ((i % 2) != 0) {
+			array->arr1[i] = array->arr2[i + 1];
+		}
+		printf("a[%d] = %d\n", i, array->arr1[i]);
+	}
+	return NULL;
+}
+
+int main(int argc, int *argv[]) 
 {
 	int size_a, size_b;
 
@@ -38,23 +52,16 @@ int main()
 		scanf("%d", &arr->arr2[j]); 
 	}
 
-	/*for(int k = 0; k < size_a; k++) { 
-		printf("a[%d] = %d\n", k, arr->arr1[k]);
-	}
+	arr->Size_a = size_a;
+	arr->Size_b = size_b;	
 
-	for(int l = 0; l < size_b; l++) { 
-		printf("b[%d] = %d\n", l, arr->arr2[l]);
-	}*/
+	pthread_t thread1, thread2;
 
-	int t_size1 = sizeof(arr->arr1)/sizeof(arr->arr1[0]);
-	int t_size2 = sizeof(arr->arr2)/sizeof(arr->arr2[0]);
-	
-	printf("size of a[] = %d\n", t_size1);
-	printf("size of b[] = %d\n", t_size2);
+	pthread_create(&thread1, NULL, replaceArray_evn, arr);
+	pthread_create(&thread2, NULL, replaceArray_odd, arr);
 
-	pthread_t thread1;
-	pthread_create(&thread1, NULL, replaceArray, arr);
 	pthread_join(thread1, NULL);
+	pthread_join(thread2, NULL);
 
 	return EXIT_SUCCESS;
 }
