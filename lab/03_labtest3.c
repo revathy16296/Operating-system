@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+#define a_size 10
+#define b_size 10
+
 struct parm_arr 
 {
-	int arr1[10];
-	int arr2[10];
+	int arr1[a_size];
+	int arr2[b_size];
 	int Size_a;
 	int Size_b;
 }; typedef struct parm_arr array;
@@ -23,9 +26,9 @@ void *replaceArray_evn(array *array)
 
 void *replaceArray_odd(array *array)
 {	
-	for (int i = 0; i < array->Size_b; i++) {
+	for (int i = 0; i < array->Size_a; i++) {
 		if ((i % 2) != 0) {
-			array->arr1[i] = array->arr2[i + 1];
+			array->arr1[i] = array->arr2[i];
 		}
 		printf("a[%d] = %d\n", i, array->arr1[i]);
 	}
@@ -42,12 +45,12 @@ int main(int argc, int *argv[])
 	array arr[size_a + size_b]; 
 	int t_size = size_a + size_b;
 	
-	printf("Enter the number for a[]\n");
+	printf("Enter the number for a[]: ");
 	for(int i = 0; i < size_a; i++) {
 		scanf("%d", &arr->arr1[i]); 
 	}
 
-	printf("Enter the number for b[]\n");
+	printf("Enter the number for b[]: ");
 	for(int j = 0; j < size_b; j++) {
 		scanf("%d", &arr->arr2[j]); 
 	}
