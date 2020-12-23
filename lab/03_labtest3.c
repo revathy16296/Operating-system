@@ -15,22 +15,27 @@ struct parm_arr
 
 void *replaceArray_evn(array *array)
 {	
+	/* Even index of b[] with odd index of a[]*/
 	for (int i = 0; i < array->Size_b; i++) {
 		if((i % 2) == 0) {
 			array->arr2[i] = array->arr1[i + 1];	
 		}
-		printf("b[%d] = %d\n", i, array->arr2[i]);
+		printf("Even index's of b[%d] = a[%d] = %d\n", i, i+1, array->arr2[i]);
 	}
 	return NULL;
 }
 
 void *replaceArray_odd(array *array)
 {	
-	for (int i = 0; i < array->Size_a; i++) {
-		if ((i % 2) != 0) {
-			array->arr1[i] = array->arr2[i];
+	/* Odd index of b[] with even index of a[]*/
+	int buffer[array->Size_b];
+	for (int j = 0; j < array->Size_b; j++) {
+		if ((j % 2) != 0) {
+			buffer[j] = array->arr1[j - 1];
+		} else {
+			buffer[j] = array->arr2[j];
 		}
-		printf("a[%d] = %d\n", i, array->arr1[i]);
+		printf("Odd index's of b[%d] = a[%d] = %d\n", j, j-1, buffer[j]);
 	}
 	return NULL;
 }
