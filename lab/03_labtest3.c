@@ -15,19 +15,24 @@ struct parm_arr
 
 void *replaceArray_evn(array *array)
 {	
-	/* Even index of b[] with odd index of a[]*/
+	/* In Even index of b[] replace with odd index of a[]*/
+	printf("\n");
+	int buffer[array->Size_b];
 	for (int i = 0; i < array->Size_b; i++) {
 		if((i % 2) == 0) {
-			array->arr2[i] = array->arr1[i + 1];	
+			buffer[i] = array->arr1[i + 1]; //Putting odd index value of a[]	
+		} else {
+			buffer[i] = array->arr2[i]; //putting the odd index value of b[]
 		}
-		printf("Even index's of b[%d] = a[%d] = %d\n", i, i+1, array->arr2[i]);
+		printf("Replacing Even index's of b[%d] = %d\n", i, buffer[i]);
 	}
 	return NULL;
 }
 
 void *replaceArray_odd(array *array)
 {	
-	/* Odd index of b[] with even index of a[]*/
+	/* In Odd index of b[] replace with even index of a[]*/
+	printf("\n");
 	int buffer[array->Size_b];
 	for (int j = 0; j < array->Size_b; j++) {
 		if ((j % 2) != 0) {
@@ -35,7 +40,7 @@ void *replaceArray_odd(array *array)
 		} else {
 			buffer[j] = array->arr2[j];
 		}
-		printf("Odd index's of b[%d] = a[%d] = %d\n", j, j-1, buffer[j]);
+		printf("Replacing Odd index's of b[%d] = %d\n", j, buffer[j]);
 	}
 	return NULL;
 }
