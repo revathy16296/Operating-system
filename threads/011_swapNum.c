@@ -6,9 +6,9 @@ void *entry_Point(int *value)
 {
     printf("\nSwapping inside thread 1 :XD \n");
     
-    int temp = *value; 
-    *value = *(value+1);
-    *(value+1) = temp;
+    int temp = value[0]; 
+    value[0] = value[1];
+    value[1] = temp;
     //printf("After swap: num1 = %d and num2 = %d\n", temp.num1, temp.num2); 
 }
 
