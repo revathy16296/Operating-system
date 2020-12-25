@@ -7,14 +7,14 @@ struct swaping_numbers {
     int num2;
 }; typedef struct swaping_numbers swap;
 
-void *entry_Point(void *value) 
+void *entry_Point(swap *value) 
 {
     printf("\nSwapping inside thread 1 :XD \n");
     
+    printf("Before swap: num1 = %d and num2 = %d\n", value->num1, value->num2); 
     swap temp;
-    printf("Before swap: num1 = %d and num2 = %d\n", temp.num1, temp.num2); 
-    temp.num1 = &value[1];
-    temp.num2 = &value[0];
+    temp.num1 = value->num2;
+    temp.num2 = value->num1;
     printf("After swap: num1 = %d and num2 = %d\n", temp.num1, temp.num2); 
 }
 
@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
     pthread_create(&thread1, NULL, entry_Point, &nNum);
     pthread_join(thread1, NULL);
 
+    printf("\nBack to main thread :D \n");
     printf("After swap: num1 = %d and num2 = %d\n", nNum.num1, nNum.num2);
     
     return EXIT_SUCCESS;
