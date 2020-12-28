@@ -1,21 +1,34 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#define limit 10
+#include "header.h"
 
 int main ()
 {
-    //printf("Enter ten numbers: ");
-    int array[limit];
+    printf("Enter '999' when done\n");
+    int array[LIMIT];
 
-    for (int i = 0; i < limit; i++) {
-        if (scanf("%d", &array[i] != 999))
-		continue;
-	else 
-		break;
+    for (int i = 0; i < LIMIT; i++) {
+        if ((array[i] != 999) && (i == 0)) {
+            scanf("%d", &array[i]);
+            continue;
+        }
+        else if ((array[i - 1] != 999) && (i > 0)) {
+            scanf("%d", &array[i]);
+            continue;
+        }
+	    else 
+		    break;
     }
 
-    int arr_size = sizeof(array)/sizeof(array[0]);
+    int arr_size = 0;
+    for (int j = 0; j < LIMIT; j++) {
+        if (array[j] != 999) {
+            arr_size++;
+            continue;
+        } else {
+            break;
+        }
+        printf("%d, ", array[j]);
+        printf("\n%d\n", arr_size);
+    }
 
     int add = addition(array, arr_size);
     float avg = average(add, arr_size);

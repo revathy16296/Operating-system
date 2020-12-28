@@ -1,18 +1,18 @@
 #include "header.h"
 
-int addition (int array[]) 
+int addition(int array[], int size) 
 {
     int buffer = 0;
-    for(int i = 0; i < arr_size; i++){
+    for(int i = 0; i < size; i++){
         buffer += array[i];
     }
     return buffer;
 }
 
-int multiplacation (int array[]) 
+int multiplacation(int array[], int size) 
 {
     int buffer = 0;
-    for(int i = 0; i < arr_size; i++){
+    for(int i = 0; i < size; i++){
         if (i == 0) 
             buffer = array[i];
         else 
@@ -21,10 +21,10 @@ int multiplacation (int array[])
     return buffer;
 }
 
-int subtraction (int array[]) 
+int subtraction(int array[], int size) 
 {
     int buffer = 0;
-    for(int i = 0; i < arr_size; i++){
+    for(int i = 0; i < size; i++){
         if (i == 0) 
             buffer = array[i];
         else 
@@ -33,8 +33,8 @@ int subtraction (int array[])
     return buffer;
 }
 
-int average (float sum) 
+int average(float sum, int size) 
 {
-    float avg = sum / (float)arr_size;
+    float avg = sum / (float)size;
     return avg;
 }
