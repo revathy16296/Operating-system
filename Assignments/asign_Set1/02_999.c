@@ -40,4 +40,6 @@ int main ()
     printf("average of elements = %f\n", avg);
     printf("Sub of elements = %d\n", sub);
     printf("mul of elements = %d\n", mul);
+
+    return EXIT_SUCCESS;
 }
