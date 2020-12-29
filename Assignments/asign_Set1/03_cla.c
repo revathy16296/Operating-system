@@ -6,11 +6,11 @@ int main (int argc, int *argv[])
     int array[arr_size];
     for (int i = 1; i <= arr_size; i++) {
         if ((atoi(argv[i]) != 999) && (i == 0)) {
-            array[i] = atoi(argv[i]);
+            array[i - 1] = atoi(argv[i]);
             continue;
         }
         else if ((atoi(argv[i - 1]) != 999) && (i > 0)) {
-            array[i] = atoi(argv[i]);
+            array[i - 1] = atoi(argv[i]);
             continue;
         }
         else {
