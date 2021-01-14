@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -std=gnu99 -pedantic
 
-output: 03_cla.o function.o
-	gcc -o output 03_cla.o function.o
+output: 09_compare.o function.o
+	gcc -o output 09_compare.o function.o
 
-03_cla.o: 03_cla.c header.h
-	gcc $(CFLAGS) -c 03_cla.c
+09_compare.o: 09_compare.c header.h
+	gcc $(CFLAGS) -c 09_compare.c
 
 function.o: function.c header.h
 	gcc $(CFLAGS) -c function.c
