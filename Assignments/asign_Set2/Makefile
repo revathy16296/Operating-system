@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -std=gnu99 -pedantic -pthread
 
-output: 11_arthm.o function.o
-	gcc $(CFLAGS) -o output 11_arthm.o function.o
+output: 12_999_t.o function.o
+	gcc $(CFLAGS) -o output 12_999_t.o function.o
 
-11_arthm.o: 11_arthm.c header.h
-	gcc $(CFLAGS) -c 11_arthm.c
+12_999_t.o: 12_999_t.c header.h
+	gcc $(CFLAGS) -c 12_999_t.c
 
 function.o: function.c header.h
 	gcc $(CFLAGS) -c function.c
