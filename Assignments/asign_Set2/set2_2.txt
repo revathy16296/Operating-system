@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include  <sys/types.h>
+#include  <sys/ipc.h>
+#include  <sys/shm.h>
+#define SI 10
+
+int sum_of_num(int array[],int n);
+float product_of_num(int array[],int n);
+
+int i;
+
+
+
+int main()
+{
+     int    ShmID1; // variable for stroing SHm id
+     int    *ShmPTR; // pointer for shared memory
+     pid_t  pid;
+        int array[SI],n=0,sum;
+        float prod,avg;
+         ShmID1 = shmget(IPC_PRIVATE, 4*sizeof(int), IPC_CREAT | 0666); //specify the permission...
+     if (ShmID1 < 0) {
+          printf("*** shmget error (server) ***\n");
+          exit(1);
+     }
+  // printf("Server has received a shared memory of four integers...\n");
+
+     ShmPTR = (int *) shmat(ShmID1, NULL, 0);
+              if ((int)ShmPTR == -1) {
+          printf("*** shmat error (server) ***\n");
+          exit(1);
+     }
+
+        printf("enter the array elements\n");
+
+        for(i=0;i<SI;i++)
+        {
+                while(array[i]!=999)
+                {
+                scanf("%d",&array[i]);
+                n=i;
+            }
+                //else
+                //{
+                        //printf("enter only 10 elements in the array pls");
+                //}
+
+        }
+
+        pid = fork();
+        if(pid == 0)
+        {
+        sum=sum_of_num(array,n);
+        //printf("the sum of number is %d\n",sum);
+        prod=product_of_num(array,n);
+        //printf("product of number is %f",product);
+         ShmPTR[0] = sum;
+         ShmPTR[1] = prod;
+     printf("shared the sum and product value in the shared memory\n");
+    }
+        else{
+
+        wait();
+        int sum2 = ShmPTR[0];
+        float avg = sum2/10;
+        printf("the average of the array elements is %f",avg);
+        printf("the sum is %d",sum2);
+        printf("the prod is %d",ShmPTR[1]);
+
+        }
+}
+
+
+
+int sum_of_num(int array[],int n)
+{
+        int sum=0;
+        for(i=0;i<n;i++)
+        {
+                sum+=array[i];
+        }
+        return sum;
+}
+
+float product_of_num(int array[],int n)
+{
+        float product=1;
+        for(i=0;i<n;i++)
+        {
+                product*=array[i];
+        }
+        return product;
+}
